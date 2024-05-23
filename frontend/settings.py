@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    'authentication',
     'subscription_box',
     'subscription_management',
     'django.contrib.admin',
