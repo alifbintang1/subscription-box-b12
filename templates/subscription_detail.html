@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Subscription Detail</title>
+</head>
+<body>
+    <h1>{{ subscription.name }}</h1>
+    <p>Type: {{ subscription.type }}</p>
+    <p>Price: {{ subscription.price }}</p>
+    <h2>Items</h2>
+    <ul>
+        {% for item in subscription.items %}
+            <li>{{ item.name }} (Quantity: {{ item.quantity }})</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'subscription_management:subscription_list' %}">Back to Subscription List</a>
+</body>
+</html>
