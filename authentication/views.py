@@ -58,9 +58,15 @@ def login(request):
         
         if r.status_code == 200:
             print('success login')
-            resp = redirect("main:show_main")  # Adjust as per your URL names
+            resp = redirect("subscription_management:box_list")  # Adjust as per your URL names
             # Set the Authorization token as a cookie, retrieved from JSON response
-            resp.set_cookie("Authorization", "Bearer " + r.json().get("token"))
+            token = r.json().get("data", {}).get("token")
+            if token:
+                resp.set_cookie("Authorization", "Bearer " + token)
+            else:
+                # Handle the case where the token is not found in the response
+                raise ValueError("Token not found in the response")
+            
             return resp
         else:
             print('failed login')

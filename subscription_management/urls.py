@@ -4,7 +4,10 @@ from . import views
 app_name = 'subscription_management'
 
 urlpatterns = [
-    path('', views.subscription_list, name='subscription_list'),
-    path('<int:subscription_id>/', views.subscription_detail, name='subscription_detail'),
+    path('', views.box_list, name='box_list'),
+    path('<int:box_id>/', views.box_detail, name='box_detail'),
     path('history/', views.subscription_history, name='subscription_history'),
+
+    path('fetch_boxes/', views.fetch_boxes, name='fetch_boxes')
+    
 ]

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <!-- <h1>Subscription Boxes</h1>
+    <ul>
+        {% for box in boxes %}
+            <li>
+                <a href="{% url 'subscription_management:box_detail' box.id %}">{{ box.name }}</a>
+                - Type: {{ box.type }}
+                - Price: {{ box.price }}
+                <ul>
+                    {% for item in box.items %}
+                        <li>{{ item.name }} (Quantity: {{ item.quantity }})</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul> -->
+
+    <h1>Subscription Boxes</h1>
+    <form id="priceFilterForm">
+        Minimum Price: <input type="number" id="minPrice" name="minPrice">
+        Maximum Price: <input type="number" id="maxPrice" name="maxPrice">
+        Name: <input type="text" id="name" name="name">
+        <button type="button" onclick="filterBoxes()">Filter</button>
+    </form>
+    <table id="boxesTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Price</th>
+                <th>Items</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script src="{% static 'filter_boxes.js' %}"></script>
+
+{% endblock content %}
