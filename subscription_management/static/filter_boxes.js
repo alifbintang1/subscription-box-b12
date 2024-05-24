@@ -29,6 +29,7 @@ function updateTable(boxes) {
         let typeCell = row.insertCell(1);
         let priceCell = row.insertCell(2);
         let itemsCell = row.insertCell(3);
+        let detailCell = row.insertCell(4); // Cell for the subscribe button
 
         nameCell.textContent = box.name;
         typeCell.textContent = box.type;
@@ -41,5 +42,21 @@ function updateTable(boxes) {
             itemList.appendChild(li);
         });
         itemsCell.appendChild(itemList);
+
+        // Create the subscribe button
+        let detailButton = document.createElement('button');
+        detailButton.textContent = 'Detail';
+        detailButton.onclick = function() {
+            detailToBox(box.id); // Function to handle subscription
+        };
+        detailCell.appendChild(detailButton);
     });
+}
+
+// Example function to handle subscription logic
+function detailToBox(boxId) {
+    console.log(`detaild to box with ID: ${boxId}`);
+    window.location.href = `/subscription/${boxId}/`;
+    // Here, you could add more complex logic, such as making a POST request to a server endpoint to handle the subscription.
+
 }
