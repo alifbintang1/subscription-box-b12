@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Subscription History</title>
+</head>
+<body>
+    <h1>Subscription History</h1>
+    <ul>
+        {% for record in history %}
+            <li>
+                {{ record.name }} - Status: {{ record.status }}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'subscription_management:subscription_list' %}">Back to Subscription List</a>
+</body>
+</html>

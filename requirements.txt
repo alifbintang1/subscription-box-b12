@@ -1,0 +1,6 @@
+psycopg2-binary
+django
+django-environ
+gunicorn
+whitenoise
+django-storage-supabase

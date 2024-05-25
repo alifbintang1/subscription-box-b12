@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Advance Programming</title>
+    
+
+{% endblock meta %}
+
+{% block content %}
+
+    
+    <!-- Header-->
+    <header class="bg-light py-5">
+        <div class="container px-5">
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-6">
+                    <div class="text-center my-5">
+
+                        <h1 class="display-5 fw-bolder text-black mb-2">Adpro - B12</h1>
+                        <div class="py-5">
+                            <a href="{% url 'authentication:login'%}" style="text-decoration: none;">
+                                <button type="button" class="btn btn-primary" style="padding: 20px 40px; font-size: 36px;">Login</button>
+                            </a>
+                            
+                        </div>
+                        <a href="{% url 'authentication:register'%}" style="text-decoration: none;" class="mx-2">
+                            <button type="button" class="btn btn-primary" style="padding: 20px 40px; font-size: 36px;">Register</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- <footer class="py-3 bg-dark">
+        <div class="container px-5"><p class="m-0 text-center text-white">Copyright &copy; D-14 2024</p></div>
+    </footer> -->
+
+
+{% endblock content %}
+

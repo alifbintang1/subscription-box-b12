@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Register</h1>
+<form method="POST" action="{% url 'authentication:register' %}" class="form">
+    {% csrf_token %}  <!-- Ensure CSRF token is included for security -->
+    <table>
+        <tr><th>Username</th><td><input type="text" name="username" required></td></tr>
+        <tr><th>Full Name</th><td><input type="text" name="fullName" required></td></tr>
+        <tr><th>Email</th><td><input type="email" name="email" required></td></tr>
+        <tr><th>Phone Number</th><td><input type="text" name="phoneNumber" required></td></tr>
+        <tr><th>Address</th><td><input type="text" name="address" required></td></tr>
+        <tr><th>Password</th><td><input type="password" name="password" required></td></tr>
+        <tr><th>Role</th>
+            <td>
+                <select name="role" required>
+                    <option value="USER">User</option>
+                    <option value="ADMIN">Admin</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Register"></td>
+        </tr>
+    </table>
+</form>
+{% endblock content %}
