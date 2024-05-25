@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    'homepage',
     'authentication',
     'subscription_box',
     'subscription_management',
