@@ -1,5 +1,7 @@
 from django.contrib import messages
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 import requests
 import json
@@ -32,7 +34,7 @@ def register(request):
         headers = {'Content-Type': 'application/json'}
 
         # Post the data
-        r = requests.post("http://localhost:8080/auth/register", data=data, headers=headers)
+        r = requests.post("http://localhost:8081/auth/register", data=data, headers=headers)
         if r.status_code == 200:
             print('success reg')
             return redirect("authentication:login")  # make sure to use the correct namespace and URL name
@@ -54,7 +56,7 @@ def login(request):
         headers = {'Content-Type': 'application/json'}
 
         print('data:', data)
-        r = requests.post("http://localhost:8080/auth/login", data=data, headers=headers)
+        r = requests.post("http://localhost:8081/auth/login", data=data, headers=headers)
         
         if r.status_code == 200:
             print('success login')
@@ -63,6 +65,7 @@ def login(request):
             token = r.json().get("data", {}).get("token")
             if token:
                 resp.set_cookie("Authorization", "Bearer " + token)
+                resp.set_cookie("username", username)
             else:
                 # Handle the case where the token is not found in the response
                 raise ValueError("Token not found in the response")
@@ -73,3 +76,11 @@ def login(request):
             messages.error(request, "Incorrect username or password")
     
     return render(request, "login.html", {})
+
+@csrf_exempt
+def logout_user(request):
+    # logout(request)
+    response = HttpResponseRedirect(reverse('homepage:show_homepage'))
+    for cookie in request.COOKIES:
+        response.delete_cookie(cookie)
+    return response

@@ -3,23 +3,15 @@
 
 
 {% block content %}
-    <!-- <h1>Subscription Boxes</h1>
-    <ul>
-        {% for box in boxes %}
-            <li>
-                <a href="{% url 'subscription_management:box_detail' box.id %}">{{ box.name }}</a>
-                - Type: {{ box.type }}
-                - Price: {{ box.price }}
-                <ul>
-                    {% for item in box.items %}
-                        <li>{{ item.name }} (Quantity: {{ item.quantity }})</li>
-                    {% endfor %}
-                </ul>
-            </li>
-        {% endfor %}
-    </ul> -->
 
     <h1>Subscription Boxes</h1>
+
+    <a href="{% url 'subscription_management:subscription_history' %}">
+        <button>
+            See List Subscriptions
+        </button>
+    </a>
+
     <form id="priceFilterForm">
         Minimum Price: <input type="number" id="minPrice" name="minPrice">
         Maximum Price: <input type="number" id="maxPrice" name="maxPrice">

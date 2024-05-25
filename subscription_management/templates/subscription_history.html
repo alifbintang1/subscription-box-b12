@@ -1,17 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Subscription History</title>
-</head>
-<body>
-    <h1>Subscription History</h1>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1>Subscriptions</h1>
     <ul>
-        {% for record in history %}
+        {% for subscription in subscriptions %}
             <li>
-                {{ record.name }} - Status: {{ record.status }}
+                <strong>Unique Code:</strong> {{ subscription.id }}<br>
+                <strong>Status:</strong> {{ subscription.status }}<br>
+                <strong>Start Date:</strong> {{ subscription.startDate }}<br>
+                <strong>End Date:</strong> {{ subscription.endDate }}<br>
+                <strong>ID Box:</strong> {{ subscription.subscriptionBoxId }}
+                
+
+                <form action="{% url 'subscription_management:cancel' subscription.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit">Cancel Subscription</button>
+                </form>
+
+                
             </li>
         {% endfor %}
+        <a href="{% url 'subscription_management:box_list' %}">Back to Subscription Box List</a>
     </ul>
-    <a href="{% url 'subscription_management:subscription_list' %}">Back to Subscription List</a>
-</body>
-</html>
+{% endblock content %}

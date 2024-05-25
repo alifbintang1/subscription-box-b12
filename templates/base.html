@@ -22,7 +22,7 @@
                 <a class="navbar-brand text-white font-monospace">Welcome, {{request.COOKIES.username}}!</a>
                 <div style="display: flex;">
                    
-                    <a href="{% url 'authentication:logout'%}" style="text-decoration: none;">
+                    <a href="{% url 'authentication:logout_user'%}" style="text-decoration: none;">
                         <button type="button" class="btn btn-primary">Logout</button>
                     </a>
                 </div>
