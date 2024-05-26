@@ -1,16 +1,7 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Subscription Detail</title>
-</head>
-<body>
-=======
 {% extends 'base.html' %}
 {% load static %}
 
 {% block content %}
->>>>>>> repoA/main
     <h1>{{ box.name }}</h1>
     <p>Type: {{ box.type }}</p>
     <p>Price: {{ box.price }}</p>
@@ -20,11 +11,6 @@
             <li>{{ item.name }} (Quantity: {{ item.quantity }})</li>
         {% endfor %}
     </ul>
-<<<<<<< HEAD
-    <a href="{% url 'subscription_management:box_list' %}">Back to Subscription List</a>
-</body>
-</html>
-=======
     <!-- Subscribe Button -->
     <form action="{% url 'subscription_management:subscribe' box.id %}" method="POST">
         {% csrf_token %} <!-- CSRF token for security -->
@@ -33,4 +19,3 @@
     <a href="{% url 'subscription_management:box_list' %}">Back to Subscription Box List</a>
 {% endblock content %}
 
->>>>>>> repoA/main

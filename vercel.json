@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {
     "builds": [{
         "src": "frontend/wsgi.py",
@@ -11,17 +10,3 @@
         }
     ]
 }
-=======
-// {
-//     "builds": [{
-//         "src": "frontend/wsgi.py",
-//         "use": "@vercel/python"
-//     }],
-//     "routes": [
-//         {
-//             "src": "/(.*)",
-//             "dest": "frontend/wsgi.py"
-//         }
-//     ]
-// }
->>>>>>> repoA/main
