@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        max-width: 960px;
+        margin: auto;
+        padding-top: 20px;
+    }
+    h1 {
+        color: #333;
+    }
+    .btn-primary, .btn-danger, .btn-warning {
+        margin-right: 5px;
+    }
+    .btn-link {
+        color: #007bff;
+        text-decoration: none;
+    }
+    .btn-link:hover {
+        text-decoration: underline;
+    }
+</style>
+{% endblock meta %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Manage Subscriptions</h1>
+
+    <div id="subscriptionsCards" class="row mt-4"></div>
+</div>
+<script src="{% static 'subscription_admin_rev.js' %}"></script>
+{% endblock content %}

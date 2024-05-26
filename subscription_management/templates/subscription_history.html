@@ -1,17 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Subscription History</title>
-</head>
-<body>
-    <h1>Subscription History</h1>
-    <ul>
-        {% for record in history %}
-            <li>
-                {{ record.name }} - Status: {{ record.status }}
-            </li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'subscription_management:subscription_list' %}">Back to Subscription List</a>
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+    <!-- Add specific CSS if needed -->
+{% endblock meta %}
+
+{% block content %}
+<div class="container mt-4">
+    
+    
+    <h1 class="my-3 text-center">Manage Your Subscriptions</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form id="statusFilterForm" class="input-group mb-3">
+                <input type="text" id="status" name="status" class="form-control" placeholder="Filter by status...">
+                <button type="button" class="btn btn-primary" onclick="filterSubscriptions()">Filter</button>
+            </form>
+        </div>
+    </div>
+    <div id="subscription_cards" class="mt-3"></div>
+</div>
+
+<div class="d-flex justify-content-center mt-3">
+    <button onclick="location.href=`{% url 'subscription_management:box_list' %}`" type="button" class="btn btn-warning">
+        Back to Box List
+    </button>
+</div>
+<script src="{% static 'filter_subscriptions_subs.js' %}"></script>
+{% endblock content %}

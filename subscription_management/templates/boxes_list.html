@@ -1,43 +1,33 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block meta %}
+    <!-- Optional CSS for specific styling can be added here -->
+{% endblock meta %}
 
 {% block content %}
-    <!-- <h1>Subscription Boxes</h1>
-    <ul>
-        {% for box in boxes %}
-            <li>
-                <a href="{% url 'subscription_management:box_detail' box.id %}">{{ box.name }}</a>
-                - Type: {{ box.type }}
-                - Price: {{ box.price }}
-                <ul>
-                    {% for item in box.items %}
-                        <li>{{ item.name }} (Quantity: {{ item.quantity }})</li>
-                    {% endfor %}
-                </ul>
-            </li>
-        {% endfor %}
-    </ul> -->
+<div class="container mt-4">
+    <h1 class="my-3 text-center">Explore Our Boxes</h1>
+    <div class="mb-3">
+        <form id="priceFilterForm" class="input-group mb-3 justify-content-center">
+            <div class="input-group">
+                <input type="number" class="form-control" id="minPrice" name="minPrice" placeholder="Minimum Price">
+                <input type="number" class="form-control" id="maxPrice" name="maxPrice" placeholder="Maximum Price">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Search by Name">
+                <button type="button" class="btn btn-info" onclick="filterBoxes()">Filter</button>
+            </div>
+        </form>
+    </div>
+    
+    <div id="boxesCards" class="row"></div>
+    
+    <div class="d-flex justify-content-center mt-3">
+        <button onclick="location.href=`{% url 'subscription_management:subscription_history' %}`" type="button" class="btn btn-primary mx-2">
+            See Subscription List
+        </button>
+    
+    </div>
+</div>
 
-    <h1>Subscription Boxes</h1>
-    <form id="priceFilterForm">
-        Minimum Price: <input type="number" id="minPrice" name="minPrice">
-        Maximum Price: <input type="number" id="maxPrice" name="maxPrice">
-        Name: <input type="text" id="name" name="name">
-        <button type="button" onclick="filterBoxes()">Filter</button>
-    </form>
-    <table id="boxesTable">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Price</th>
-                <th>Items</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-    <script src="{% static 'filter_boxes.js' %}"></script>
-
+<script src="{% static 'filter_boxes_rev.js' %}"></script>
 {% endblock content %}
